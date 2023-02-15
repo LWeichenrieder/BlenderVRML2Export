@@ -64,7 +64,7 @@ def save_bmesh(fw, bm,
     v = None
     for v in bm.verts:
         # fw("%.6f %.6f %.6f " % v.co[:])
-        fw("{0} {1} {2} ".format(v.co[:]))
+        fw("{0} {1} {2} ".format(*v.co[:]))
     del v
     fw(']\n')  # end 'point[]'
     fw('\t\t}\n')  # end 'Coordinate'
@@ -143,7 +143,7 @@ def save_bmesh(fw, bm,
     f = fv = None
     for f in bm.faces:
         fv = f.verts[:]
-        fw("{0} {1} {2} -1 ".format((fv[0].index, fv[1].index, fv[2].index)))
+        fw("{0} {1} {2} -1 ".format(fv[0].index, fv[1].index, fv[2].index))
     del f, fv
     fw(']\n')  # end 'coordIndex[]'
 
@@ -200,7 +200,7 @@ def save_object(fw, global_matrix,
             else:
                 material_colors = [
                         # "%.2f %.2f %.2f " % (m.diffuse_color[:] if m else (1.0, 1.0, 1.0))
-                        "{0} {1} {2} ".format((m.diffuse_color[:] if m else (1.0, 1.0, 1.0)))
+                        "{0} {1} {2} ".format(*(m.diffuse_color[:] if m else (1.0, 1.0, 1.0)))
                         for m in me.materials]
         assert(color_type in {'VERTEX', 'MATERIAL'})
 
