@@ -95,7 +95,7 @@ def save_bmesh(fw, bm,
                 except:
                     l = None
                 # fw(c_none if l is None else ("%.2f %.2f %.2f " % l[color_layer][:]))
-                fw(c_none if l is None else ("{0} {1} {2} ".format(l[color_layer][:])))
+                fw(c_none if l is None else ("{0} {1} {2} ".format(*l[color_layer][:])))
 
             del v
             fw(']\n')  # end 'color[]'
